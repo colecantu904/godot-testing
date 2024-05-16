@@ -6,3 +6,6 @@ extends Node
 
 func add(n):
 	print(n + value)
+
+func multiply(n):
+	print(n * value)
