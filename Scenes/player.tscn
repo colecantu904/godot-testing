@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccsrvjf6ulthx"]
+
+[ext_resource type="Texture2D" uid="uid://fq6iise6x1rr" path="res://Assets/Basic Charakter Spritesheet.png" id="2_j6204"]
+
+[sub_resource type="GDScript" id="GDScript_wavcf"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 150.0
+
+func _physics_process(delta):
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction_x = Input.get_axis(\"ui_left\", \"ui_right\")
+	var direction_y = Input.get_axis(\"ui_up\", \"ui_down\")
+	
+	if direction_x or direction_y:
+		velocity.x = direction_x * SPEED
+		velocity.y = direction_y * SPEED
+	else:
+		velocity = Vector2(0, 0)
+		
+	
+
+	move_and_slide()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e45ro"]
+atlas = ExtResource("2_j6204")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gog26"]
+atlas = ExtResource("2_j6204")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8jhv"]
+atlas = ExtResource("2_j6204")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogcb4"]
+atlas = ExtResource("2_j6204")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuun7"]
+atlas = ExtResource("2_j6204")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7e6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e45ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gog26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8jhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogcb4")
+}],
+"loop": true,
+"name": &"Foward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuun7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxrfx"]
+radius = 19.0263
+
+[node name="player" type="CharacterBody2D"]
+script = SubResource("GDScript_wavcf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -1)
+scale = Vector2(2.06771, 2.06771)
+sprite_frames = SubResource("SpriteFrames_p7e6x")
+animation = &"Foward"
+autoplay = "Foward"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("CircleShape2D_kxrfx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
