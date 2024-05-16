@@ -9,3 +9,6 @@ func add(n):
 
 func multiply(n):
 	print(n * value)
+
+func divide(n):
+	print( n / value)
