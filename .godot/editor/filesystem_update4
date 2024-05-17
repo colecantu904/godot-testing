@@ -1,2 +1,3 @@
 res://Scenes/first_level.tscn
-res://Scripts/Class.gd
+res://Scenes/player.tscn
+res://Scenes/node.tscn

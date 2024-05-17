@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b38al3elxhn83"]
+[gd_scene load_steps=3 format=3 uid="uid://b38al3elxhn83"]
 
 [ext_resource type="PackedScene" uid="uid://ccsrvjf6ulthx" path="res://Scenes/player.tscn" id="2_pnhvt"]
 [ext_resource type="PackedScene" uid="uid://d2d1gli4g6f1b" path="res://Scenes/radnom_scene.tscn" id="3_8m8gi"]
-[ext_resource type="PackedScene" uid="uid://d0hvltj4r1hr7" path="res://Scenes/main.tscn" id="3_i1rbp"]
 
 [node name="FirstLevel" type="Node2D"]
 
@@ -10,5 +9,3 @@
 position = Vector2(48.4432, 30.6447)
 
 [node name="player" parent="." instance=ExtResource("2_pnhvt")]
-
-[node name="Main" parent="." instance=ExtResource("3_i1rbp")]
